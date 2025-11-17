@@ -3,18 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GH Pages Test</title>
+  <title>GH Pages Multi-Step App</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>🚀 Hello from GitHub Pages</h1>
-    <p>This is a test page hosted on GitHub Pages.</p>
+    <h1>🚀 Multi-Step Demo</h1>
+    <p>Fill out the steps below and review everything at the end.</p>
 
-    <form id="testForm">
-      <label for="name">Your Name:</label>
-      <input type="text" id="name" placeholder="Enter your name" />
-      <button type="submit">Submit</button>
+    <div class="progress">
+      <div id="progressText">Step 1 of 3</div>
+      <div class="progress-bar">
+        <div id="progressFill"></div>
+      </div>
+    </div>
+
+    <form id="multiStepForm">
+      <!-- STEP 1 -->
+      <div class="step active" data-step="1">
+        <h2>Basic Info</h2>
+
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" />
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" placeholder="you@example.com" />
+
+        <div class="nav-buttons">
+          <button type="button" id="next1">Next</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step" data-step="2">
+        <h2>Work Details</h2>
+
+        <label for="company">Company:</label>
+        <input type="text" id="company" placeholder="Company name" />
+
+        <label for="role">Your Role:</label>
+        <input type="text" id="role" placeholder="e.g. Project Manager" />
+
+        <label for="projectType">Project Type:</label>
+        <select id="projectType">
+          <option value="">Select one</option>
+          <option value="Estimating & bids">Estimating & bids</option>
+          <option value="Purchasing & materials">Purchasing & materials</option>
+          <option value="Field tracking">Field tracking</option>
+          <option value="Reporting & dashboards">Reporting & dashboards</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <div class="nav-buttons">
+          <button type="button" id="back2">Back</button>
+          <button type="button" id="next2">Next</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 (REVIEW) -->
+      <div class="step" data-step="3">
+        <h2>Review Your Info</h2>
+        <p>Please confirm the details below.</p>
+
+        <div class="summary">
+          <p><strong>Name:</strong> <span id="summaryName"></span></p>
+          <p><strong>Email:</strong> <span id="summaryEmail"></span></p>
+          <p><strong>Company:</strong> <span id="summaryCompany"></span></p>
+          <p><strong>Role:</strong> <span id="summaryRole"></span></p>
+          <p><strong>Project Type:</strong> <span id="summaryProjectType"></span></p>
+        </div>
+
+        <div class="nav-buttons">
+          <button type="button" id="back3">Back</button>
+          <button type="submit" id="submitBtn">Submit</button>
+        </div>
+      </div>
     </form>
 
     <div id="response"></div>
