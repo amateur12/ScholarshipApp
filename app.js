@@ -41,22 +41,21 @@ document.getElementById("back3").addEventListener("click", () => {
   goToStep(2);
 });
 
-// Handle final submit
+// Final submit
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  updateSummary(); // refresh in case user went back and changed something
-
+  updateSummary();
   response.classList.remove("error");
-  response.textContent = "Form submitted successfully. Here’s what you entered above.";
+  response.textContent = "Form submitted successfully!";
 });
 
-// Helpers
+/* Helpers */
 function goToStep(stepNumber) {
   currentStep = stepNumber;
 
-  steps.forEach((step) => {
-    const stepIndex = Number(step.getAttribute("data-step"));
-    step.classList.toggle("active", stepIndex === currentStep);
+  steps.forEach(step => {
+    const s = Number(step.getAttribute("data-step"));
+    step.classList.toggle("active", s === currentStep);
   });
 
   updateProgress();
@@ -64,17 +63,13 @@ function goToStep(stepNumber) {
 
 function updateProgress() {
   progressText.textContent = `Step ${currentStep} of ${totalSteps}`;
-  const percent = (currentStep / totalSteps) * 100;
-  progressFill.style.width = `${percent}%`;
+  progressFill.style.width = `${(currentStep / totalSteps) * 100}%`;
 }
 
 function validateStep1() {
   clearResponse();
-  const name = nameInput.value.trim();
-  const email = emailInput.value.trim();
-
-  if (!name || !email) {
-    showError("Please enter both your name and email to continue.");
+  if (!nameInput.value.trim() || !emailInput.value.trim()) {
+    showError("Please enter your name and email.");
     return false;
   }
   return true;
@@ -82,12 +77,8 @@ function validateStep1() {
 
 function validateStep2() {
   clearResponse();
-  const company = companyInput.value.trim();
-  const role = roleInput.value.trim();
-  const projectType = projectTypeInput.value;
-
-  if (!company || !role || !projectType) {
-    showError("Please complete company, role, and project type before continuing.");
+  if (!companyInput.value.trim() || !roleInput.value.trim() || !projectTypeInput.value) {
+    showError("Please complete all fields before continuing.");
     return false;
   }
   return true;
@@ -95,21 +86,4 @@ function validateStep2() {
 
 function updateSummary() {
   summaryName.textContent = nameInput.value.trim();
-  summaryEmail.textContent = emailInput.value.trim();
-  summaryCompany.textContent = companyInput.value.trim();
-  summaryRole.textContent = roleInput.value.trim();
-  summaryProjectType.textContent = projectTypeInput.value || "(Not selected)";
-}
-
-function showError(message) {
-  response.textContent = message;
-  response.classList.add("error");
-}
-
-function clearResponse() {
-  response.textContent = "";
-  response.classList.remove("error");
-}
-
-// Initialize
-updateProgress();
+  summaryEmail.te
