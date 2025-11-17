@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GH Pages Multi-Step App</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Multi-Step Demo</title>
+  <link rel="stylesheet" href="style.css?v=3" />
 </head>
 <body>
   <div class="container">
@@ -19,6 +19,7 @@
     </div>
 
     <form id="multiStepForm">
+
       <!-- STEP 1 -->
       <div class="step active" data-step="1">
         <h2>Basic Info</h2>
@@ -42,7 +43,7 @@
         <input type="text" id="company" placeholder="Company name" />
 
         <label for="role">Your Role:</label>
-        <input type="text" id="role" placeholder="e.g. Project Manager" />
+        <input type="text" id="role" placeholder="e.g. Engineer" />
 
         <label for="projectType">Project Type:</label>
         <select id="projectType">
@@ -60,7 +61,7 @@
         </div>
       </div>
 
-      <!-- STEP 3 (REVIEW) -->
+      <!-- STEP 3 -->
       <div class="step" data-step="3">
         <h2>Review Your Info</h2>
         <p>Please confirm the details below.</p>
@@ -78,11 +79,12 @@
           <button type="submit" id="submitBtn">Submit</button>
         </div>
       </div>
+
     </form>
 
     <div id="response"></div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>
